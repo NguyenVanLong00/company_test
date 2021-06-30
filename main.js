@@ -104,6 +104,7 @@ function dangtin() {
 
 function validate() {
 
+
     let input_required = document.querySelectorAll('.input_required');
     for (let i = 0; i < input_required.length; i++) {
         let element = input_required[i];
@@ -114,9 +115,19 @@ function validate() {
         }
     }
 
+    let selector_holder = document.querySelectorAll('.selector_holder');
+    for (let i = 0; i < selector_holder.length; i++) {
+        let element = selector_holder[i];
+        if (element.innerText == "") {
+            scrollTo_element(element);
+            alert("input không được bỏ trống");
+            return false;
+        }
+    }
+
     let date_input = document.querySelectorAll('input[type="date"]');
     for (let i = 0; i < date_input.length; i++) {
-        let element = textarea[i];
+        let element = date_input[i];
 
         let today = new Date();
         let select_date = new Date(element.value);
@@ -150,4 +161,55 @@ function validate() {
 
     return true;
 
+}
+
+
+
+let selector = document.querySelector('.selector');
+let holder = document.querySelectorAll('.selector_holder');
+let dropdown = document.querySelectorAll('.selector_dropdown');
+let items = document.querySelectorAll('.select_item');
+
+
+function closeDropDown() {
+    dropdown.forEach(element => {
+        element.classList.remove("active_selector");
+    })
+}
+
+function openDropDown(element) {
+    closeDropDown();
+    element.nextElementSibling.classList.toggle("active_selector");
+}
+
+items.forEach(element => {
+    element.addEventListener('click', function(e) {
+        let targetHolder = element.parentElement.previousElementSibling;
+        let value = element.innerHTML;
+        targetHolder.innerHTML +=
+            `
+                <div class="selector_holder_item " onclick="removeSelectorE(this)">
+                <span>${value}</span>
+                <img src="./image/icon/delete.png" />
+                 </div>
+            `;
+
+        closeDropDown();
+    })
+});
+
+function removeSelectorE(element) {
+    element.remove();
+    closeDropDown();
+}
+
+function getSelectorData(e) {
+
+    let spans = e.querySelectorAll('span')
+    let data = [];
+    spans.forEach(element => {
+
+        data.push(element.innerText);
+    })
+    return data;
 }

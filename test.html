@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .selector {
+        position: relative;
+    }
+    
+    .selector_holder {
+        padding: 0 13px;
+        height: 32px;
+        border-radius: 5px;
+        border: 2px solid rgba(0, 0, 0, .25);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        height: 40px;
+        background: #FFFFFF;
+        border: 0.5px solid #555555;
+        border-radius: 5px;
+    }
+    
+    .selector_dropdown {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 40px;
+        width: 100%;
+    }
+    
+    .active {
+        display: block;
+    }
+    
+    .select_item {
+        padding: 0 13px;
+        border: 0.5px solid #555555;
+        border-top: none;
+        display: flex;
+        align-items: center;
+        height: 40px;
+        background: #FFFFFF;
+    }
+    
+    .select_item:first-of-type {
+        border-top: 2px solid rgba(0, 0, 0, .25);
+    }
+    
+    .select_item:last-of-type {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    
+    .selector_holder_item {
+        padding: 0 7px;
+        height: 24px;
+        background: #F0F9FF;
+        border: 0.2px solid #3797DD;
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+        line-height: 24px;
+        color: #2268A7;
+        margin-left: 8px;
+    }
+    
+    .selector_holder_item img {
+        margin-left: 10px;
+    }
+</style>
+
+<body>
+    <div class="selector">
+        <div class="selector_holder">
+
+        </div>
+        <div class="selector_dropdown ">
+            <div class="select_item ">
+                nga
+            </div>
+            <div class="select_item ">
+                phap
+            </div>
+            <div class="select_item ">
+                duc
+            </div>
+        </div>
+    </div>
+    <script>
+        let selector = document.querySelector('.selector');
+        let holder = document.querySelector('.selector_holder');
+        let dropdown = document.querySelector('.selector_dropdown');
+        let items = document.querySelectorAll('.select_item');
+        holder.addEventListener('click', function() {
+            dropdown.classList.toggle('active');
+            console.log(dropdown);
+        })
+        console.log(items);
+        items.forEach(element => {
+            element.addEventListener('click', function(e) {
+                dropdown.classList.toggle('active');
+                let value = element.innerHTML;
+                holder.innerHTML +=
+                    `
+                <div class="selector_holder_item " onclick="removeSelectorE(this)">
+                <span>${value}</span>
+                <img src="./image/icon/delete.png" />
+                 </div>
+            `;
+            })
+        });
+
+        function removeSelectorE(element) {
+            element.remove();
+            dropdown.classList.remove('active');
+        }
+
+        function getSelectorData(e) {
+
+            let spans = e.querySelectorAll('span')
+            let data = [];
+            spans.forEach(element => {
+
+                data.push(element.innerText);
+            })
+            return data;
+        }
+    </script>
+</body>
+
+</html>
