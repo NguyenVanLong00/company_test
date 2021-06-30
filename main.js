@@ -13,6 +13,28 @@ let menu_mobile = document.querySelector('.mobile_menu');
 
 
 
+function closeTab() {
+    let tabs = document.querySelectorAll('.page_tab');
+    tabs.forEach(element => {
+        element.classList.remove('page_tab_avtive');
+    })
+}
+
+function openTab(element) {
+
+
+    let className = element.getAttribute('tab_target');
+
+    let tab = document.querySelector('.' + className);
+    console.log(tab);
+    if (tab != null) {
+        closeTab();
+        tab.classList.add('page_tab_avtive');
+    }
+
+}
+
+
 
 function clearNavitem() {
     nav_item.forEach(element => {
@@ -25,7 +47,6 @@ function clearDot(element) {
     dot_list.forEach(element => {
         element.classList.remove("dot_active");
     })
-    console.log(element.parentElement.previousElementSibling);
     element.parentElement.previousElementSibling.classList.add("active");
 }
 

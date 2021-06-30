@@ -13,7 +13,7 @@
     <div class="d_flex">
         <div class="page_cover" onclick="hideMenu()"></div>
         <div class="left_nav">
-            <header class="d_flex justify_content_center align_items_center">
+            <header class="d_flex justify_content_center align_items_center tab_button">
                 <img src="./image/logo_trang.png" alt="timviec365.com">
 
                 <div class="menu_cancel">
@@ -28,7 +28,7 @@
                 <div class="user_title"><span>Công ty Công nghệ thông tin - VNPT</span></div>
             </section>
             <section class="nav">
-                <div class="nav_item ">
+                <div class="nav_item " tab_target="quan_ly_chung" onclick="openTab(this)">
                     <div class="item_wrapper ">
                         <div class="tab_img"><img src="./image/icon/quan_ly_chung.png" alt=""></div>
                         <div><span>Quản lý chung</span></div>
@@ -42,14 +42,14 @@
                             <div><span>Tin tuyển dụng</span></div>
                         </div>
                         <div>
-                            <img class="collapse_togle" src="./image/icon/arrow_down.png" alt="">
+                            <img class="collapse_togle rotage_180" src="./image/icon/arrow_down.png" alt="">
                         </div>
                     </div>
                 </div>
-                <div class="collapse_content">
+                <div class="collapse_content" style="max-height: none;">
                     <div class="nav_collapse_item collapse_item">
                         <div class="item_wrapper ">
-                            <div class="d_flex align_items_center">
+                            <div class="d_flex align_items_center" tab_target="dang_tin_moi" onclick="openTab(this)">
                                 <div class="tab_img"></div>
                                 <div class="dot dot_active"></div>
                                 <div><span>Đăng tin mới</span></div>
@@ -259,7 +259,30 @@
                             </div>
                         </div>
                     </section>
-                    <section class="CV_filer_form">
+                    <section class="page_tab general_setting quan_ly_chung ">
+                        <div class="tab_content">
+                            <div>
+                                <img src="./image/gift.svg" alt="">
+                            </div>
+                            <div>
+                                <h3>CHÚC MỪNG BẠN ĐÃ ĐĂNG TIN TUYỂN DỤNG THÀNH CÔNG</h3>
+                            </div>
+                            <div>
+                                <p>Tin tuyển dụng của bạn đã được duyệt và được hiển thị trong danh sách việc làm của Timviec365.com</p>
+                                <br/>
+                                <p>Tin tuyển dụng của bạn có thể chưa tối ưu về nội dung để tiếp cận nhiều ứng viên và thu hút ứng viên nộp hồ sơ, hãy liên hệ với chuyên viên để chúng tôi có thể hướng dẫn bạn đăng tin hiệu quả nhất</p>
+                                <br/>
+                                <p>Tăng tốc tuyển dụng ! Chúng tôi sẽ tối ưu nội dung đăng tin giúp bạn, cùng đó đưa ra giải pháp hiệu quả và chiến lược tuyển dụng trên facebook, google,... giúp tìm được ứng viên chất lượng nhanh chóng</p>
+                            </div>
+
+                            <div class=" refer_link">
+                                <a class="button_pill" href="#"><span>Tăng tốc ứng dụng</span></a>
+                                <a class="button_pill" style="background: #3797DD;" href="#"><span>ứng viên tiềm năng</span></a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="page_tab CV_filer_form dang_tin_moi page_tab_avtive">
                         <form action="#" method="POST">
                             <div class="job_filler  ">
                                 <div class="fillter_title fillter_collapse">
@@ -726,6 +749,7 @@
                             </div>
                         </form>
                     </section>
+
                 </div>
 
 
