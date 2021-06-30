@@ -120,18 +120,25 @@ html {
   color: #fff;
 }
 
+.page_cover {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 500;
+}
+
 .left_nav {
   width: 305px;
   min-height: 100vh;
   padding-bottom: 5rem;
+  transition: 0.3s;
   background: linear-gradient(180deg, #2fa7ff 0%, #0c75c4 88.54%, #2268a7 100%);
 }
-@media (max-width: 1400px) {
-  .left_nav {
-    display: none;
-  }
-}
 .left_nav header {
+  position: relative;
   height: 61px;
   background: linear-gradient(180deg, #2fa7ff 27.08%, #3493e8 100%);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
@@ -139,6 +146,34 @@ html {
 .left_nav header .logo {
   width: 131px;
   height: 47px;
+}
+.left_nav header .menu_cancel {
+  position: absolute;
+  right: 20px;
+  display: none;
+}
+@media (max-width: 1400px) {
+  .left_nav {
+    position: fixed;
+    top: 0;
+    right: -1000px;
+    z-index: 1000;
+    overflow: auto;
+    top: 0;
+    bottom: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .left_nav::-webkit-scrollbar {
+    display: none;
+  }
+  .left_nav {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .left_nav header .menu_cancel {
+    display: block;
+  }
 }
 .left_nav .user_info {
   display: flex;
@@ -248,6 +283,10 @@ html {
   width: 4px;
   height: 46px;
   background: #F8971C;
+}
+
+.left_nav_active {
+  right: 0;
 }
 
 .main_content {
@@ -525,7 +564,7 @@ html {
 .main_content .CV_filer_form .fillter_content .fillter_input select:focus {
   border-color: #c96060;
 }
-.main_content .CV_filer_form .fillter_content .fillter_input input[type=date] {
+.main_content .CV_filer_form .fillter_content .fillter_input .date {
   color: #838383;
 }
 .main_content .CV_filer_form .fillter_content .fillter_input input,
@@ -611,7 +650,7 @@ html {
     padding: 10px 13px;
   }
   .main_content .nav_bar .mobile_menu {
-    width: 75vw;
+    width: 100vw;
   }
   .main_content .user_infomation {
     margin-top: 60px;
@@ -680,7 +719,7 @@ html {
 .main_content .CV_filer_form .fillter_content .fillter_input select:focus {
     border-color: #c96060;
   }
-  .main_content .CV_filer_form .fillter_content .fillter_input input[type=date] {
+  .main_content .CV_filer_form .fillter_content .fillter_input .date {
     color: #838383;
   }
   .main_content .CV_filer_form .fillter_content .fillter_input input,

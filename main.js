@@ -81,11 +81,16 @@ function collapse_fillter() {
 }
 
 function showMenu() {
-    menu_mobile.classList.add('mobile_menu_active');
+    //menu_mobile.classList.add('mobile_menu_active');
+    document.querySelector('.left_nav').classList.add('left_nav_active');
+
+    document.querySelector('.page_cover').style.display = "block";
 }
 
 function hideMenu() {
-    menu_mobile.classList.remove('mobile_menu_active');
+    //menu_mobile.classList.remove('mobile_menu_active');
+    document.querySelector('.left_nav').classList.remove('left_nav_active');
+    document.querySelector('.page_cover').style.display = "none";
 }
 
 function scrollTo_element(element) {
@@ -98,6 +103,35 @@ function dangtin() {
 }
 
 function validate() {
+
+    let input_required = document.querySelectorAll('.input_required');
+    for (let i = 0; i < input_required.length; i++) {
+        let element = input_required[i];
+        if (element.value.trim() == "") {
+            scrollTo_element(element);
+            alert("input không được bỏ trống");
+            return false;
+        }
+    }
+
+    let date_input = document.querySelectorAll('input[type="date"]');
+    for (let i = 0; i < date_input.length; i++) {
+        let element = textarea[i];
+
+        let today = new Date();
+        let select_date = new Date(element.value);
+        if (today.getFullYear() < select_date.getFullYear()) {
+            if (today.getMonth() < select_date.getMonth()) {
+                if (today.getDate() < select_date.getDate()) {
+                    scrollTo_element(element);
+
+                    alert("thời gian cần lớn hơn hoặc bằng hiện tại!");
+                    return false;
+                }
+            }
+        }
+    }
+
     let textarea = document.querySelectorAll('textarea');
     for (let i = 0; i < textarea.length; i++) {
         let element = textarea[i];
@@ -111,26 +145,8 @@ function validate() {
     }
 
 
-    let date_input = document.querySelectorAll('input[type="date"]');
-    for (let i = 0; i < date_input.length; i++) {
-        let element = textarea[i];
-        if (element.value == "") {
-            scrollTo_element(element);
-            alert("thời gian cần lớn hơn hoặc bằng hiện tại!");
-            return false;
-        }
-        let today = new Date();
-        let select_date = new Date(element.value);
-        if (today.getFullYear() < select_date.getFullYear()) {
-            if (today.getMonth() < select_date.getMonth()) {
-                if (today.getDate() < select_date.getDate()) {
-                    scrollTo_element(element);
-                    alert("thời gian cần lớn hơn hoặc bằng hiện tại!");
-                    return false;
-                }
-            }
-        }
-    }
+
+
 
     return true;
 
